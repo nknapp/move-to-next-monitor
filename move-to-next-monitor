@@ -35,8 +35,13 @@ y_offset=$(xwininfo -id "$window_id" | awk '/Relative upper-left Y:/ { print $4 
 x=$(( x - x_offset))
 y=$(( y - y_offset))
 
-# Compute new X position
-new_x=$((x + display_width))
+if [ "$1" = "left" ] ; then 
+    # Compute new X position
+    new_x=$((x - display_width))
+else 
+    # Compute new X position
+    new_x=$((x + display_width))
+fi
 # Compute new Y position
 new_y=$((y + display_height))
 
